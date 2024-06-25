@@ -5,8 +5,8 @@
 		<title>Retail Product Mix: Kat Kivett Portfolio</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="/assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="../assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
 
@@ -21,7 +21,7 @@
                             <p>This analysis is meant to showcase various tasks and skills in SQL. This would not be a finished product that would be shared with leadership, but would rather be informing next steps in analysis and exploration.</p>
                         </div>
 						<div class="image">
-							<img src="/images/retailfloor.jpg" alt="" />
+							<img src="../images/retailfloor.jpg" alt="" />
 						</div>
 					</section>
 
@@ -84,7 +84,7 @@
     SELECT TOP(10) * FROM dbo.product_type;
     SELECT TOP(10) * FROM dbo.sale_data;
 </code></pre>
-<p><span class="image fit"><img src="/images/top10.jpg" alt="" /></span></p>
+<p><span class="image fit"><img src="../images/top10.jpg" alt="" /></span></p>
 <p>Now we'll run a simple query to see which item has the most units ordered. The item_data table gives us the EAN and product name, however we'll need to fetch the sales figures from the sale_data table.</p>
 <pre><code>
     SELECT 
@@ -100,7 +100,7 @@
     ORDER BY 
         SUM(s.quantityOrdered) DESC;
 </code></pre>
-<p><span class="image"><img src="/images/quantityOrdered.jpg" alt="" /></span></p>
+<p><span class="image"><img src="../images/quantityOrdered.jpg" alt="" /></span></p>
 <p>Units ordered and Sales Dollars generated are not the same thing. We can get a better feel for the amount of money made on these orders by calculating the total Retail Sales and Margin Dollars generated.</p>
 <pre><code>
     SELECT 
@@ -120,7 +120,7 @@
     ORDER BY 
         SUM(s.quantityOrdered) DESC;
 </code></pre>
-<p><span class="image"><img src="/images/retailAndMargin.jpg" alt="" /></span></p>
+<p><span class="image"><img src="../images/retailAndMargin.jpg" alt="" /></span></p>
 <p>And if we want to order these so we can see which products are our top margin producers? Depending on which version of SQL you are working with this can differ in syntax. Even within the same SQL there are options for query structure. I am choosing to utilize a subquery in my inner join. We'll also filter down to just products with at least 10,000 units sold.</p>
 <pre><code>
     SELECT 
@@ -149,7 +149,7 @@
     ORDER BY 
         sq.marginDollars DESC;
 </code></pre>
-<p><span class="image"><img src="/images/topMarginProducts.jpg" alt="" /></span></p>
+<p><span class="image"><img src="../images/topMarginProducts.jpg" alt="" /></span></p>
 <p>Are our top producing items by unit the same as by retail, or by margin dollars? Using window functions to create a rank on each metric (quantity ordered, retail sales, margin dollars) provides a quick and easy way to visualize how these products stack up.</p>
 <pre><code>
     SELECT 
@@ -181,7 +181,7 @@
     ORDER BY 
         sq.marginDollars DESC;
 </code></pre>
-<p><span class="image"><img src="/images/salesRanks.jpg" alt="" /></span></p>
+<p><span class="image"><img src="../images/salesRanks.jpg" alt="" /></span></p>
 <p>Some data extraction and cleansing is required to get a full picture of this company's sales landscape. For example, we have the full address for customer orders, but these are not broken out by state. That can be extracted in the subquery. Since the address format is very consistent in using a 5 digit zipcode we can do a substring.</p>
 <pre><code>
     SELECT 
@@ -214,7 +214,7 @@
     ORDER BY 
         SUM(sq.retailSales) DESC;
 </code></pre>
-<p><span class="image"><img src="/images/salesByState.jpg" alt="" /></span></p>
+<p><span class="image"><img src="../images/salesByState.jpg" alt="" /></span></p>
 <p>SQL can also perform the heavy-lifting when it comes to data aggregation and structure. For example, some data visualization and dashboarding tools have a difficult time with Month over Month or Year over Year calculations. We can work around those limitations by restructuring data now. I can use a window function to create a Month over Month format that would easily feed into a tool like PowerBI, LookerStudio, or Tableau.</p>
 <pre><code>
 WITH attributes AS (
@@ -242,7 +242,7 @@ WITH attributes AS (
         a.orderMonth, 
         a.productName;
 </code></pre>
-<p><span class="image"><img src="/images/salesMonthOverMonth.jpg" alt="" /></span></p>
+<p><span class="image"><img src="../images/salesMonthOverMonth.jpg" alt="" /></span></p>
 <p>Last but not least I want to join multiple tables and do some additional formatting, both to data and my data labels. The purpose for this prettied up flat file is to do some further work outside of SQL. I'll utilize this table in a Storytelling with Data style insightful analysis and use it to produce various visualizations.</p>
 <pre><code>
     SELECT 
@@ -272,7 +272,7 @@ WITH attributes AS (
         i.product, 
         p.Product_Type;
 </code></pre>
-<p><span class="image fit"><img src="/images/aggregatedDatafile.jpg" alt="" /></span></p>
+<p><span class="image fit"><img src="../images/aggregatedDatafile.jpg" alt="" /></span></p>
 
 
 
@@ -299,7 +299,7 @@ WITH attributes AS (
                             <li><a href="https://www.linkedin.com/in/katherinekivett" target="_blank" class="icon brands style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
                             <li><a href="mailto:kat.kivett@outlook.com" target="_blank" class="icon style2 fa-envelope"><span class="label">Email</span></a></li>
                             <li><a href="https://github.com/kat-kivett/" target="_blank" class="icon brands style2 fa-github"><span class="label">Github</span></a></li>
-                            <li><a href="projects/reference.html" target="_blank"  class="icon solid style2 fa-info-circle"><span class="label">References</span></a></li>
+                            <li><a href="./projects/reference.html" target="_blank"  class="icon solid style2 fa-info-circle"><span class="label">References</span></a></li>
                         </ul>
                         <p>&copy; Untitled. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
                     </div>
@@ -308,13 +308,13 @@ WITH attributes AS (
 			</div>
 
 		<!-- Scripts -->
-			<script src="/assets/js/jquery.min.js"></script>
-			<script src="/assets/js/jquery.scrollex.min.js"></script>
-			<script src="/assets/js/jquery.scrolly.min.js"></script>
-			<script src="/assets/js/browser.min.js"></script>
-			<script src="/assets/js/breakpoints.min.js"></script>
-			<script src="/assets/js/util.js"></script>
-			<script src="/assets/js/main.js"></script>
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/jquery.scrollex.min.js"></script>
+			<script src="../assets/js/jquery.scrolly.min.js"></script>
+			<script src="../assets/js/browser.min.js"></script>
+			<script src="../assets/js/breakpoints.min.js"></script>
+			<script src="../assets/js/util.js"></script>
+			<script src="../assets/js/main.js"></script>
 
 	</body>
 </html>
