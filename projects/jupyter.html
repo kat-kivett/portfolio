@@ -4259,7 +4259,7 @@
 	  border: none;
 	  color: var(--jp-ui-font-color1);
 	  font-size: var(--jp-content-font-size1);
-	  table-layout: fixed;
+	  table-layout: auto;
 	  margin-left: auto;
 	  margin-bottom: 1em;
 	  margin-right: auto;
@@ -5380,13 +5380,14 @@
 	
 	.jp-OutputArea {
 	  overflow-y: auto;
+	  overflow-x: auto;
 	}
 	
 	.jp-OutputArea-child {
 	  display: table;
 	  table-layout: fixed;
-	  width: 100%;
-	  overflow: hidden;
+	  width: auto;
+	  overflow: auto;
 	}
 	
 	.jp-OutputPrompt {
@@ -5420,7 +5421,7 @@
 	
 	.jp-OutputArea-output {
 	  display: table-cell;
-	  width: 100%;
+	  width: auto;
 	  height: auto;
 	  overflow: auto;
 	  user-select: text;
@@ -5647,6 +5648,12 @@
 	  .jp-OutputArea-child .jp-OutputArea-output {
 		display: table-row;
 		margin-left: var(--jp-notebook-padding);
+		overflow-x: auto;
+		white-space: nowrap;
+	  }
+	  .jp-OutputArea{
+		  overflow-x: auto;
+		  white-space: nowrap;
 	  }
 	}
 	
